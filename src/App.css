@@ -1,6 +1,7 @@
 :root {
   --dark: #252423;
   --light: #444342;
+  --blue: #7efbec;
 }
 
 body {
@@ -23,7 +24,10 @@ canvas {
 section {
   width: 1024px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
+  margin: 12px 0px;
 }
 
 @media (max-width: 414px) {
@@ -55,12 +59,21 @@ button {
   margin: 12px 0px;
 }
 
+i {
+  margin-left: 12px;
+  font-size: 36px;
+  color: var(--light);
+  cursor: pointer;
+}
+
 input {
   margin-left: 12px;
 }
 
 input[type='range'] {
-  background: var(--dark);
+  -webkit-appearance: none;
+  background: var(--light);
+  height: 1px;
 }
 
 input[type='range']:focus {
@@ -68,26 +81,21 @@ input[type='range']:focus {
 }
 
 input[type='range']::-webkit-slider-thumb {
-  cursor: pointer;
-}
-
-select {
-  margin-left: 12px;
+  -webkit-appearance: none;
+  border: 1px solid var(--blue);
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
   background: var(--dark);
-  border-radius: 4px;
-  height: 36px;
-  width: 106px;
-  color: white;
   cursor: pointer;
 }
 
-select:focus {
-  outline: none;
-}
-
-i {
-  margin-left: 12px;
-  font-size: 36px;
-  color: var(--light);
+input[type='range']::-moz-range-thumb {
+  -webkit-appearance: none;
+  border: 1px solid var(--blue);
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: var(--dark);
   cursor: pointer;
 }

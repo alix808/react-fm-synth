@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import SynthContext from '../context/synth/synthContext';
 
 const Init = () => {
@@ -29,12 +29,22 @@ const Init = () => {
     // eslint-disable-next-line
   }, [analyser, modulator, carrier, gain]);
 
+  const inputEl = useRef(null);
+
+  const onClick = () => {
+    if (audioCtx.state === 'running') {
+      audioCtx.suspend();
+    } else if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
+    }
+  };
+
   return (
     <div>
       {!audioCtx ? (
         <button onClick={() => synthContext.createAudioCtx()}>play</button>
       ) : (
-        <button />
+        <button ref={inputEl} onClick={onClick}></button>
       )}
     </div>
   );
